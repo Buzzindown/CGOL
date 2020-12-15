@@ -1,0 +1,194 @@
+h1{
+     color:#FFFFFF;
+     font-family: monospace;
+}
+ .infoPage{
+     color:#FFFFFF;
+     font-family: monospace;
+     font-size: 20px;
+     padding-left: 20%;
+     padding-right: 20%;
+}
+ body{
+    /* Full height */
+     height: 100%;
+     background-color:#000000;
+    /* Center and scale the image nicely */
+}
+ #sketch-div{
+     vertical-align: middle;
+     width: 1200px;
+     height: 800px;
+     margin: auto;
+}
+ #firstpage{
+     padding-top: 15%;
+     padding-bottom: 15%;
+     padding-left: 20%;
+     padding-right: 20%;
+     font-family: monospace;
+     font-size: 150%;
+     text-align: center;
+     color: #FFFFFF;
+}
+ #bigTitle{
+     font-size: 45px;
+     border-style: solid;
+     border-width: 2px;
+     border-color: white;
+}
+ #homepage{
+     font-size: 150%;
+     text-align: center;
+     color: #FFFFFF;
+     text-decoration: none;
+     padding-top: 20px;
+     padding-bottom: 20px;
+     border-style: solid;
+     border-width: 2px;
+     border-color: white;
+}
+ #toSim{
+     font-size: 150%;
+     text-align: center;
+     color: #FFFFFF;
+     text-decoration: none;
+     padding-top: 20px;
+     padding-bottom: 20px;
+     border-style: solid;
+     border-width: 2px;
+     border-color: white;
+}
+ #toSim:hover{
+     background-color:#52bdff;
+}
+ #homepage:hover{
+     background-color:#52bdff;
+}
+ #backButton{
+     display:flex;
+     width:1200px;
+     font-family: monospace;
+     line-height: 80px;
+     font-size: 250%;
+     text-align: center;
+     justify-content: center;
+     color: #FFFFFF;
+     text-decoration: none;
+     margin: auto;
+     border-style: solid;
+     border-width: 2px;
+     border-color: white;
+}
+ #backButton:hover{
+     background-color:#52bdff;
+}
+ #Generation{
+     display:flex;
+     justify-content: center;
+     font-size: 60px;
+     margin:0;
+}
+ #gridLock{
+     border-color: #3273A8;
+}
+ #buttonDrawErase{
+     border-color: #3273A8;
+}
+ button {
+     color: white;
+     background-color: black;
+     border-width: large;
+     border-color: white;
+     cursor: pointer;
+     font-family: monospace;
+     font-size: 25px;
+     text-transform: uppercase;
+     width:100%;
+}
+ button:hover{
+     background-color: #52bdff;
+}
+ a:visited, a:hover, a:focus {
+     text-decoration: none;
+     color: #FFFFFF;
+}
+ .container{
+     display:flex;
+     justify-content: center;
+}
+ .buttoncontainer{
+     width: 600px;
+}
+/*slider CSS credit: https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+ .slidecontainer{
+    /* Width of the outside container */
+     width: 600px;
+}
+/* The slider itself */
+ .slider {
+     -webkit-appearance: none;
+    /* Override default CSS styles */
+     appearance: none;
+     width: 100%;
+    /* Full-width */
+     height: 25px;
+    /* Specified height */
+     background: #d3d3d3;
+    /* Grey background */
+     outline: none;
+    /* Remove outline */
+     opacity: 0.7;
+    /* Set transparency (for mouse-over effects on hover) */
+     -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
+     transition: opacity .2s;
+}
+/* Mouse-over effects */
+ .slider:hover {
+     opacity: 1;
+    /* Fully shown on mouse-over */
+}
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+ .slider::-webkit-slider-thumb {
+     -webkit-appearance: none;
+    /* Override default look */
+     appearance: none;
+     width: 25px;
+    /* Set a specific slider handle width */
+     height: 25px;
+    /* Slider handle height */
+     background: #52bdff;
+    /* background */
+     cursor: pointer;
+    /* Cursor on hover */
+}
+/*stolen from https://www.w3schools.com/howto/howto_css_tooltip.asp */
+ .tooltip {
+     -webkit-appearance: none;
+     position: relative;
+     display: inline-block;
+     text-align:center;
+     width: 600px;
+}
+/* Tooltip text */
+ .tooltip .tooltiptext {
+     visibility: hidden;
+     width: 300px;
+     background-color: #52bdff;
+     color: #fff;
+    /* Position the tooltip text */
+     position: absolute;
+     z-index: 1;
+     top: 125%;
+     left: 50%;
+     margin-left: -60px;
+    /* Fade in tooltip */
+     opacity: 0;
+     transition: opacity 0.3s;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+ .tooltip:hover .tooltiptext {
+     visibility: visible;
+     opacity: 1;
+}

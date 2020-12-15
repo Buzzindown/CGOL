@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="">
+   <head>
+      <link rel="stylesheet" href="stylesheet.css">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>CGOL</title>
+   </head>
+   <body>
+      <div align="left" class = "infoPage">
+         <h1 align="center" id="bigTitle"> INTRODUCTION </h1>
+         <h1 align="center" >What is John Conway's Game of life?</h1>
+         <p>The Game of Life, also known simply as Life, or Conway's Game of Life  (CGOL) is a cellular automaton devised by the British mathematician John Horton Conway in 1970.
+            It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with
+            the Game of Life by creating an initial configuration and observing how it evolves. It is Turing complete and can simulate a universal
+            constructor or any other Turing machine.
+         </p>
+         <h1 align="center" >Rules of the Game</h1>
+         <p>The universe of the Game of Life is an infinite, two-dimensional orthogonal grid of square cells, each of which is in one of two
+            possible states, live or dead, (or populated and unpopulated, respectively). Every cell interacts with its eight neighbours, which
+            are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+         </p>
+         <ol>
+            <li>Any live cell with fewer than two live neighbours dies, as if by underpopulation.</li>
+            <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+            <li>Any live cell with more than three live neighbours dies, as if by overpopulation.</li>
+            <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+         </ol>
+         <p>
+         <p>These rules, which compare the behavior of the automaton to real life, can be condensed into the following:</p>
+         <ol>
+         <li>Any live cell with two or three live neighbours survives.</li>
+         <li>Any dead cell with three live neighbours becomes a live cell.</li>
+         <li>All other live cells die in the next generation. Similarly, all other dead cells stay dead.</li>
+         </ol
+         <p>The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to
+            every cell in the seed; births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick.
+            Each generation is a pure function of the preceding one. The rules continue to be applied repeatedly to create further generations.
+         </p>
+         <h1 align="center" >Features of the Simulator </h1>
+         <ul>
+            <li>Cell age indicated via color</li>
+            <ul>
+               <li> Cells will change color every generation depending on how long they have been alive for. Freshly born cells will appear turqoise and fade into
+                  white as their age increases each generation. Grey cells represent freshly dead cells, which fade into black the longer they remain dead.
+            </ul>
+            <li>Changeable grid size.</li>
+            <ul>
+               <li> Grid size is capped at 86 x 58 in order to maintain framerate</li>
+            </ul>
+            <li>Create alive / dead cells using a "brush".</li>
+            <li>Increase or decrease the time that each generation takes to tick.</li>
+            <li>Dynamically change the brush size. </li>
+            <li>Reset the grid for a fresh start. </li>
+         </ul>
+         <h1 align="center" id="bigTitle">
+         How to Use the Interactive Simulator
+         <h1>
+         <h2 align="center" > Changing the Grid Size </h2>
+         <p> First things first. Before you are able to create your simulation, you must adjust the grid size to your liking. Once you have
+            selected an appropriate grid size, click on "LOCK GRID SIZE" to confirm your selection. You can now draw your cells on the grid.
+         </p>
+         <h2 align="center" > Drawing Cells </h2>
+         <p>
+            The key part of this simulator is the ability to draw and erase cells as you see fit. In order to be able to draw, the grid
+            size must be locked in, as mentioned above. You can only draw during the create stage which is indicated at the top of the page.
+            This "stage" can be toggled using the "START/STOP" button, which upon clicking will pause the simulation allowing you to add
+            new cells. You can change from drawing live cells to drawing dead cells (erasing) using the "DRAW/ERASE" button to toggle between the two.
+            Brush size can be changed whenever using the range slider "Brush Size".
+         </p>
+         <h2 align="center" > Starting the Simulation </h2>
+         <p>Now that you have your simulation setup, click the "START/STOP" button to start the simulation. The generation count is Indicated
+            on the right side of the page. The time that a generation takes to complete can be adjusted using the "Generation Speed" slider.
+         </p>
+         <h2 align="center" > Grid On/Off </h2>
+         <p> The grid overlay can be toggled on and off using the "GRID ON/OFF" button.</p>
+         <h2 align="center" > Resetting the Grid </h2>
+         <p> You can reset the grid at anytime by pressing the "RESET GRID" button. Pressing the button will clear all live cells from the grid.</p>
+         <div id="toSim">
+            <a href = "simPage.html"> Take Me to the Simulator</a>
+         </div>
+      </div>
+   </body>
+</html>

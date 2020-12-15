@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="">
+   <head>
+      <link rel="stylesheet" href="stylesheet.css">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>CGOL</title>
+      <style>
+         body {
+         padding: 0;
+         margin: 0;
+         }
+      </style>
+      <script src="../p5.js"></script>
+      <script src="sketch.js"></script>
+   </head>
+   <body>
+      <h1 align="center">John Conway's Game of Life</h1>
+      <h1 align="center" id="stage" type="strong"></h1>
+      <div class = "container">
+         <div class="buttoncontainer">
+            <p><button class="tooltip" id="buttonlock"> LOCK GRID SIZE
+               <span class="tooltiptext">Confirms grid size, press reset grid to change the grid size again.
+               Once confirmed, you can draw.</span>
+               </button>
+            </p>
+            <p><button class="tooltip" id="gridLock" > GRID
+               <span style="color:#3273A8">ON</span>
+               <span style="color:#FFF">/</span>
+               <span style="color:#E63535">OFF</span>
+               <span class="tooltiptext">Toggles the grid overlay on or off.</span>
+               </button>
+            </p>
+            <p><button class="tooltip" id="buttonDrawErase">
+               <span style="color:#3273A8">DRAW</span>
+               <span style="color:#FFF">/</span>
+               <span style="color:#E63535">ERASE</span>
+               <span class="tooltiptext">Toggles between drawing live cells, to (erasing) drawing dead cells.</span>
+               </button>
+            </p>
+            <p><button class="tooltip" id="button">
+               <span style="color:#3273A8">START</span>
+               <span style="color:#FFF">/</span>
+               <span style="color:#E63535">STOP</span>
+               <span class="tooltiptext">Starts the simulation, pausing allows you to draw.</span>
+               </button>
+            </p>
+            <p><button class="tooltip" id="resetButton"> RESET GRID
+               <span class="tooltiptext">Resets the grid entirely (have to reconfirm grid size).</span>
+               </button>
+            </p>
+         </div>
+         <div class="slidecontainer">
+            <h1 class="tooltip" width="300px"> Grid Size
+               <span class="tooltiptext">Slide to make the grid larger or smaller</span>
+            </h1>
+            <input type="range" min="1" max="100" value="26" class="slider" id="GridSlider">
+            <h1 class="tooltip"> Generation Speed
+               <span class="tooltiptext">Slide to make the generations tick faster. Click LOCK GRID SIZE to draw.</span>
+            </h1>
+            <input type="range" min="1" max="12" value="6" class="slider" id="speedSlider">
+            <h1 class="tooltip"> Brush Size
+               <span class="tooltiptext">Slide to make the "brush" larger or smaller.</span>
+            </h1>
+            <input type="range" min="0" max="15" value="0" class="slider" id="brushSlider">
+         </div>
+      </div>
+      <div id="sketch-div"></div>
+      <h1 id="Generation"></h1>
+      <div id="backButton">
+         <a href = "introduction.html"> INSTRUCTIONS</a>
+      </div>
+   </body>
+</html>
