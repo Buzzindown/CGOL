@@ -5,6 +5,8 @@ The website provides a grid on which creators can lay out their designs.\
 The simulator can then be run, allowing the creator to observe\
 how the simulations reacts to their creation.
 
+Live website: http://interactivecgol.com/
+
 ## Why p5.js
 I chose p5.js as the graphical library for this project for a few reasons.\
 Mainly, for ease of use. Admittedly, p5 impressively inefficient, however\
@@ -24,6 +26,9 @@ I'll give a brief overview of the features.\
 |Adjust generation speed|
 |Adjust brush size|
 |Generation counter|
+
+## Next Steps
+Making the website mobile friendly.
 
 ## Sample gif
 
