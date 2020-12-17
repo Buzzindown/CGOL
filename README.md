@@ -9,7 +9,7 @@ Live website: http://interactivecgol.com/
 
 ## Why p5.js
 I chose p5.js as the graphical library for this project for a few reasons.\
-Mainly, for ease of use. Admittedly, p5 impressively inefficient, however\
+Mainly, for ease of use. Admittedly, p5 is impressively inefficient, however\
 seeing as this project is quite small, I wasn't too worried about performance.\
 P5 was a reinterpretation of the original Processing library, specifically\
 aimed at web use. This made it my top choice.
@@ -28,7 +28,11 @@ I'll give a brief overview of the features.\
 |Generation counter|
 
 ## Next Steps
-Making the website mobile friendly.
+- Making the website mobile friendly.
+- Dedicated generation stepping button. 
+- Turning aging (colors) on or off. 
+- Possible account system, to save previous designs\ 
+and come back to them in the future.
 
 ## Sample gif
 
