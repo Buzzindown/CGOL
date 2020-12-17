@@ -31,7 +31,7 @@ I'll give a brief overview of the features.\
 - Making the website mobile friendly.
 - Dedicated generation stepping button. 
 - Turning aging (colors) on or off. 
-- Possible account system, to save previous designs\ 
+- Possible account system, to save previous designs
 and come back to them in the future.
 
 ## Sample gif
