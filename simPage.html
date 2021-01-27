@@ -11,7 +11,7 @@
          margin: 0;
          }
       </style>
-      <script src="../p5.js"></script>
+      <script src="p5.js"></script>
       <script src="sketch.js"></script>
    </head>
    <body>
@@ -65,10 +65,13 @@
             <input type="range" min="0" max="15" value="0" class="slider" id="brushSlider">
          </div>
       </div>
+      <h1 id="x_y" align="center"> 
+         X, Y
+      </h1>
       <div id="sketch-div"></div>
       <h1 id="Generation"></h1>
-      <div id="backButton">
-         <a href = "introduction.html"> INSTRUCTIONS</a>
+      <div id="backButton" onclick="location.href='introduction.html';" style="cursor: pointer;">
+         <a> INSTRUCTIONS</a>
       </div>
    </body>
 </html>

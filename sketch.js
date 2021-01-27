@@ -67,14 +67,14 @@ function setup() {
 
 function connectButtons() {
   //getting button functions setup
-  buttons.button.mousePressed(startGame);
+  document.getElementById("button").addEventListener("click", startGame);
   if (sizeChose === false) {
-    buttons.buttonlock.mousePressed(locksize);
+    document.getElementById("buttonlock").addEventListener("click", locksize);
   }
-  buttons.gridLock.mousePressed(gridOnOff);
+  document.getElementById("gridLock").addEventListener("click", gridOnOff);
   gridLock = true;
-  buttons.resetButton.mousePressed(resetGrid);
-  buttons.buttonDrawErase.mousePressed(drawErase);
+  document.getElementById("resetButton").addEventListener("click", resetGrid);
+  document.getElementById("buttonDrawErase").addEventListener("click", drawErase);
 }
 
 function setCanvas() {
@@ -102,6 +102,11 @@ function setButtons() {
 
 // drawing loop (required for p5)
 function draw() {
+  var Xpos2 = mouseX / scalar;
+  var Ypos2 = mouseY / scalar;
+if(Xpos2 >= 0 && Xpos2 <= bigWidth && Ypos2 >= 0 && Ypos2 <= bigHeight){
+   document.getElementById("x_y").innerHTML = Math.floor(Xpos2) + "," + Math.floor(Ypos2);
+}
   keepCanvasCentered();
   brushSize = sliders.brushSlider.value();
   //updating our generation counter
@@ -250,19 +255,23 @@ function mousePressed() {
 function brushDraw() {
   if (going === false && gameon === true) {
     // finding which square in the grid we're hovering over
-    var num1 = mouseY / scalar;
-    var num2 = mouseX / scalar;
+
+    var Xpos = mouseX / scalar;
+    var Ypos = mouseY / scalar;
     // rounding so nothing weird happens with decimals
-    num2 = Math.round(num2);
-    num1 = Math.round(num1);
+  //  Xpos = Math.round(Xpos);
+ //   Ypos = Math.round(Ypos);
+ if(Xpos >= 0 && Xpos <= bigWidth && Ypos >= 0 && Ypos <= bigHeight){
+     document.getElementById("x_y").innerHTML = Math.floor(Xpos) + "," + Math.floor(Ypos);
+ }
     // checking we're in the canvas and then changing the states of the cells
-    if ((num2 - brushSize >= 0) && (num2 + brushSize < bigWidth / scalar) &&
-      (num1 - brushSize >= 0) && (num1 + brushSize < bigHeight / scalar)) {
+    if ((Xpos - brushSize >= 0) && (Xpos + brushSize < bigWidth / scalar) &&
+      (Ypos - brushSize >= 0) && (Ypos + brushSize < bigHeight / scalar)) {
       if (mouseX < bigWidth && mouseX >= 0 && mouseY >= 0 && mouseY < bigHeight) {
         if (drawOrErase == false) {
-          drawCheck(num1, num2);
+          drawCheck(Math.floor(Ypos), Math.floor(Xpos));
         } else {
-          eraseCheck(num1, num2);
+          eraseCheck(Math.floor(Ypos), Math.floor(Xpos));
         }
       }
     }
