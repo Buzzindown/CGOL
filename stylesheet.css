@@ -5,10 +5,11 @@ h1{
  .infoPage{
      color:#FFFFFF;
      font-family: monospace;
-     font-size: 20px;
-     padding-left: 20%;
-     padding-right: 20%;
+     font-size: 100%;
+     padding-left: 15%;
+     padding-right: 15%;
 }
+
  body{
     /* Full height */
      height: 100%;
@@ -17,9 +18,16 @@ h1{
 }
  #sketch-div{
      vertical-align: middle;
+     display: flexbox;
      width: 1200px;
      height: 800px;
-    // margin: auto;
+     margin: auto;
+}
+
+#x_y{
+    width: 1200px;
+    font-size: 30px;
+    margin:auto;
 }
  #firstpage{
      padding-top: 15%;
@@ -32,7 +40,7 @@ h1{
      color: #FFFFFF;
 }
  #bigTitle{
-     font-size: 45px;
+     font-size: 300%;
      border-style: solid;
      border-width: 2px;
      border-color: white;
@@ -66,7 +74,7 @@ h1{
      background-color:#52bdff;
 }
  #backButton{
-     display:flex;
+     display:flexbox;
      width:1200px;
      font-family: monospace;
      line-height: 80px;
@@ -84,10 +92,12 @@ h1{
      background-color:#52bdff;
 }
  #Generation{
-     display:flex;
+     display:flexbox;
      justify-content: center;
+     text-align: center;
+     width: 1200px;
      font-size: 60px;
-     margin:0;
+     margin:auto;
 }
  #gridLock{
      border-color: #3273A8;
@@ -115,14 +125,30 @@ h1{
 }
  .container{
      display:flex;
+     align-content: center;
+     flex-direction: row;
      justify-content: center;
+     padding:auto;
+     width: 1200px;
+     margin: auto;
 }
  .buttoncontainer{
+    flex-direction: column;
      width: 600px;
+}
+
+.top{
+    display:flexbox;
+    justify-content: center;
+    text-align: center;
+    width: 1200px;
+    font-size: 30px;
+    margin:auto;
 }
 /*slider CSS credit: https://www.w3schools.com/howto/howto_js_rangeslider.asp */
  .slidecontainer{
     /* Width of the outside container */
+    flex-direction: column;
      width: 600px;
 }
 /* The slider itself */
