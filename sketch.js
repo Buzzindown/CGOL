@@ -102,11 +102,21 @@ function setButtons() {
 
 // drawing loop (required for p5)
 function draw() {
-  var Xpos2 = mouseX / scalar;
-  var Ypos2 = mouseY / scalar;
-if(Xpos2 >= 0 && Xpos2 <= bigWidth && Ypos2 >= 0 && Ypos2 <= bigHeight){
-   document.getElementById("x_y").innerHTML = Math.floor(Xpos2) + "," + Math.floor(Ypos2);
-}
+  var Xpos2 = Math.floor(mouseX / scalar);
+  var Ypos2 = Math.floor(mouseY / scalar);
+
+
+  if(Xpos2 >= 0 && Xpos2 < Math.round(bigWidth/scalar) && Ypos2 >= 0 && Ypos2 < Math.round(bigHeight/scalar)){
+        var ageTracker = cells[Xpos2][Ypos2].age;
+    document.getElementById("x_y").innerHTML = Xpos2 + "," + Ypos2;
+    if(cells[Xpos2][Ypos2].state == 1){
+      document.getElementById("cellStats").innerHTML = "Cell has been alive for " + ageTracker + " generations";
+    }else{
+      document.getElementById("cellStats").innerHTML = "Cell has been alive for " + ageTracker + " generations";
+    }
+  
+  }
+
   keepCanvasCentered();
   brushSize = sliders.brushSlider.value();
   //updating our generation counter
