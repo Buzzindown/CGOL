@@ -100,22 +100,24 @@ function setButtons() {
   buttons.buttonDrawErase = select('#buttonDrawErase');
 }
 
-// drawing loop (required for p5)
-function draw() {
+function cellStateIndicator(){
   var Xpos2 = Math.floor(mouseX / scalar);
   var Ypos2 = Math.floor(mouseY / scalar);
-
-
   if(Xpos2 >= 0 && Xpos2 < Math.round(bigWidth/scalar) && Ypos2 >= 0 && Ypos2 < Math.round(bigHeight/scalar)){
         var ageTracker = cells[Xpos2][Ypos2].age;
     document.getElementById("x_y").innerHTML = Xpos2 + "," + Ypos2;
     if(cells[Xpos2][Ypos2].state == 1){
       document.getElementById("cellStats").innerHTML = "Cell has been alive for " + ageTracker + " generations";
     }else{
-      document.getElementById("cellStats").innerHTML = "Cell has been alive for " + ageTracker + " generations";
+      document.getElementById("cellStats").innerHTML = "Cell has been dead for " + ageTracker + " generations";
     }
   
   }
+}
+
+// drawing loop (required for p5)
+function draw() {
+  cellStateIndicator();
 
   keepCanvasCentered();
   brushSize = sliders.brushSlider.value();
