@@ -13,6 +13,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
+  overflow-y: hidden;
 }
 
 code {
@@ -29,6 +30,16 @@ code {
   height: 100vh;
 }
 
+@keyframes slide-up {
+  from {top: 100%;}
+  to {top: 0%}
+}
+
+@keyframes fade-in {
+  from{background-color: rgba(255,255,255,0);}
+  to {background-color: rgba(255,255,255,1);}
+}
+
 #cgol-app-grid {
   display: flex;
   flex-direction: column;
@@ -37,8 +48,37 @@ code {
   overflow-y: hidden;
   overflow-x: hidden;
   background-color: black;
-  transition: background-color 2s linear
+  z-index: 1;
 }
+
+#white-slider {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-color: white;
+}
+
+.slide-up-util {
+  animation-name: slide-up;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+.fade-in-util {
+  animation-name: fade-in;
+  animation-duration: 0.75s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+
 
 #heading-wrapper{
   position: absolute;
@@ -48,9 +88,25 @@ code {
   top: 40%;
   margin: auto;
   width: 80%;
-  background-color: rgba(49, 49, 49, 0.7);
-  box-shadow: 10px 10px 10px white;
+  background-color: white;
+  border: 3px solid black;
+  outline: 2px solid white;
   color: white;
+  z-index: 80;
+}
+
+#heading-wrapper:hover > * {
+  font-weight: 1000;
+  cursor: pointer;
+}
+
+#heading-wrapper:hover{
+  outline: 6px solid white;
+}
+
+#heading-wrapper :is(p, h1){
+  z-index: 30;
+  color: black
 }
 
 .row {
@@ -73,7 +129,8 @@ code {
   height: calc(100% - 4px);
   width: calc(100% - 4px);
   background-color: white;
-  transition: background-color 1s ease;
+  transition: background-color 0.5s ease;
+  z-index: 50;
 }
 
 #white-slider {

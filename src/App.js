@@ -40,14 +40,14 @@ function App() {
           document.getElementById(`cell-${rowIndex}-${cellIndex}`).style.backgroundColor = "black"
           if(cellIndex == row.props.children.length-1 && rowIndex == rowsArr.length-1){
             setTimeout(() => {
-              document.getElementById('cgol-app-grid').style.backgroundColor = "white";
+              document.getElementById('white-slider').setAttribute("class", "slide-up-util")
               setTimeout(()=>{
                 setAnimationDone(true)
-              }, 2000)
+              }, 1000)
             }, 10);
           }
         }, timer)
-        timer += 25;
+        timer += 15;
       })
     })
    
@@ -83,7 +83,7 @@ function App() {
      do this with css but might need to do something with js to calculate the grid
      we could just run the grid off of the width and then make it however long it needs to be*/}
      {animationDone &&(
-       <div id="heading-wrapper">
+       <div id="heading-wrapper" className="fade-in-util">
         <h1>Conway's Game of Life</h1>
         <p>Let's Get Started</p>
        </div>
