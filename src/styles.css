@@ -2,7 +2,6 @@
   --main-bg-color: black;
   --header-color: white;
   --text-color: white;
-  --width-of-grid-cell: calc(100vw/10);
 }
 
 body {
@@ -118,8 +117,8 @@ code {
 }
 
 .cell-wrapper {
-  width: calc(100vw / 10);
-  height: calc(100vw / 10);
+  width: calc(100vw / var(--row-length));
+  height: calc(100vw / var(--row-length));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -129,7 +128,7 @@ code {
   height: calc(100% - 4px);
   width: calc(100% - 4px);
   background-color: white;
-  transition: background-color 0.5s ease;
+  transition: background-color var(--cell-animation) ease;
   z-index: 50;
 }
 

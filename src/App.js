@@ -3,25 +3,53 @@ import React,{useEffect, useState} from 'react';
 
 function App() {
 
-  let [columnLength, setColumnLength ] = useState(0);
   let [rowsArr, setRowsArr] = useState([]);
   let [animationDone, setAnimationDone] = useState(false);
+  let [animationAdjustment, setAnimationAdjustment] = useState(0)
 
-  const calculateGrid = () => {
+  useEffect(()=>{
+    if(animationAdjustment > 0){
+      startTransition();
+    }
+  },[rowsArr, animationAdjustment])
+
+  useEffect(() => {
+    let rowLength = getRowLength();
+    let columnLength = getColumnLength(rowLength);
+    setTableJSX(columnLength, rowLength)
+  }, [])
+
+  const getColumnLength = (rowLength) => {
     let {height, width} = document.getElementById('root').getBoundingClientRect();
-    let cellDimension = Math.floor(0.1 * width);
-    console.log(cellDimension)
-    let cellsTall = Math.round(height/cellDimension);
-    setColumnLength(cellsTall)
-    console.log(cellsTall)
-    console.log(`height: ${height} || width: ${width}`)
+    let length = Math.round(height/Math.floor(width/rowLength));
+    return length;
   }
 
-  const setTableJSX = () => {
+  // for column length we need the row length
+  const getRowLength = () => {
+    let {width,height} = document.getElementById('root').getBoundingClientRect();
+    // if we have a larger tablet or something we want more squares
+    let length = 0 
+    let cellAnimation = 0
+    if(width > height){
+      length = 15;
+      cellAnimation = 0.8;
+    }else{
+      length = 7;
+      cellAnimation = 1;
+    }
+
+    setAnimationAdjustment(cellAnimation == 0.8 ? 10 : 20)
+    document.getElementById('root').style.setProperty("--row-length",length)
+    document.getElementById('root').style.setProperty("--cell-animation",`${cellAnimation}s`)
+    return length;
+  }
+
+  const setTableJSX = (columnLength, rowLength) => {
     let newRowsArr = [];
     for(let i = 0; i < columnLength; i++){
       let row = [];
-      for(let j = 0; j < 10; j++){
+      for(let j = 0; j < rowLength; j++){
         row.push(
         <div className="cell-wrapper" id={`cell-wrapper-${i}-${j}`} key={`cell-wrapper-${i}-${j}`}>
           <div className="cell" id={`cell-${i}-${j}`} key={`cell-${i}-${j}`}/>
@@ -44,44 +72,16 @@ function App() {
               setTimeout(()=>{
                 setAnimationDone(true)
               }, 1000)
-            }, 10);
+            }, animationAdjustment);
           }
         }, timer)
-        timer += 15;
+        timer += animationAdjustment;
       })
     })
-   
-    // rowsArr.forEach((row,rowIndex) => {
-    //   setTimeout(()=>{
-    //     document.getElementById(`row-${rowsArr.length-rowIndex-1}`).style.backgroundColor = "white"
-    //   }, timer)
-    //   timer += 100;
-    // })
-
   }
 
-  // const startTransition = () => {
-  //   for()
-  // }
-
-  useEffect(()=>{
-    startTransition();
-  },[rowsArr])
-
-  useEffect(()=>{
-    setTableJSX()
-  },[columnLength])
-
-  useEffect(() => {
-    // we'll have 10 cells across
-   calculateGrid();
-  }, [])
   return (
     <div id="cgol-app-grid">
-     {/* we'll have some sort of intro page then bounce to the game page 
-     we could have some sort of neat background animation go on, we could probably
-     do this with css but might need to do something with js to calculate the grid
-     we could just run the grid off of the width and then make it however long it needs to be*/}
      {animationDone &&(
        <div id="heading-wrapper" className="fade-in-util">
         <h1>Conway's Game of Life</h1>
