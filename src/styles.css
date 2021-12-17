@@ -20,11 +20,6 @@ code {
     monospace;
 }
 
-/* could have some sort of cool animation where the bg is a grid 
-  and as it fades to black our text/menu shows up - this might be cool
-*/
-
-
 #root {
   height: 100vh;
 }
@@ -86,7 +81,8 @@ code {
   right:0;
   top: 40%;
   margin: auto;
-  width: 80%;
+  width: 60%;
+  padding: 2em;
   background-color: white;
   border: 3px solid black;
   outline: 2px solid white;
@@ -105,7 +101,7 @@ code {
 
 #heading-wrapper :is(p, h1){
   z-index: 30;
-  color: black
+  color: black;
 }
 
 .row {
@@ -154,9 +150,27 @@ code {
 
 
 #cgol-app h1 {
-  font-size: 3rem; 
+  font-size: 5rem; 
 }
 
 #cgol-app p {
-  font-size: 2rem;
+  font-size: 4rem;
 }
+
+@media screen and (max-width: 600px) {
+    #heading-wrapper {
+      top: 30%;
+      width: 70%;
+      padding: 0.5em;
+
+    }
+    #cgol-app h1 {
+      font-size: 2rem; 
+    }
+    
+    #cgol-app p {
+      font-size: 1rem;
+    }
+  
+}
+
