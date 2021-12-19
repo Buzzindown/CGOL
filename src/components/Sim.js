@@ -1,17 +1,21 @@
 import React, {useEffect, useState} from 'react'
 import "./sim.css"
 
-function Sim() {
+function Sim(props) {
 
-    const [timeElapsed, setTimeElapsed] = useState(0)
+    const {isPlaying} = props
+
+    const [timeElapsed, setTimeElapsed] = useState(0);
     const [gameCells, setGameCells] = useState([]);
-    const [running, setRunning] = useState(false)
+
+    const rowWidth = 50;
+    const columnHeight = 50;
 
     const getGameCells = () => {
         let cells = []
-        for(let i = 0; i < 10; i++){
+        for(let i = 0; i < rowWidth; i++){
             let row = []
-            for(let j = 0; j < 15; j++){
+            for(let j = 0; j < columnHeight; j++){
                 row.push({
                     x: i,
                     y: j,
@@ -24,25 +28,26 @@ function Sim() {
     }
 
     useEffect(()=>{
-        setTimeout(()=>{
-            setRunning(true)
-        }, 10000)
-        setTimeout(()=>{
-            setRunning(false)
-        }, 60000)
+         document.getElementById('root').style.setProperty("--row-width",`${rowWidth}`)
+         document.getElementById('root').style.setProperty("--column-height",`${columnHeight}`)
     },[])
 
     // we have a means of starting/stopping the sim || cool
     useEffect(()=>{
-        if(running){
-            setTimeout(()=>{updateGeneration()},1000)
+        if(isPlaying){
+            setTimeout(()=>{
+                updateGeneration()
+            },10)
         }
-    },[running, timeElapsed])
+    },[isPlaying, timeElapsed])
 
     // will update to our next generation + update time elapsed
     const updateGeneration = () => {
         setGameCells((oldGameCells) => {
             let newGameCells = [...oldGameCells]
+            oldGameCells.forEach((row,i)=>{
+                newGameCells[i] = [...row]
+            })
             newGameCells.forEach((row) => {
                 row.forEach((cell) => {
                     newGameCells[cell.x][cell.y] = updateCell(cell, oldGameCells)
@@ -82,13 +87,10 @@ function Sim() {
         if(checkIfValid(oldGameCells,x-1,y+1)){
             aliveNeighbors += 1;
         }
-
         if(newCell.age > -1){
-            if(aliveNeighbors < 2){
-                newCell.age = -1;
-            }else if(aliveNeighbors === 2 || aliveNeighbors === 3){
+            if(aliveNeighbors === 2 || aliveNeighbors === 3){
                 newCell.age += 1;
-            }else if(aliveNeighbors > 3){
+            }else{
                 newCell.age = -1;
             }
         }else{
@@ -114,7 +116,7 @@ function Sim() {
     }
 
     const cellOnClick = (cell) => {
-        if(running === false){
+        if(!isPlaying){
             setGameCells((oldCells) =>{
                 let newCells = [...oldCells]
                 
@@ -151,11 +153,11 @@ function Sim() {
                 gameCells.length > 0 && (
                     gameCells.map((row, index) => {
                         return (
-                            <div className="row" key={index}>
+                            <div className="sim-row" key={index}>
                                 {
                                     row.map((cell) => {
                                         return (
-                                        <div className={`cell ${getCellClassName(cell)}`} key={`cell-${cell.x}-${cell.y}-${cell.age}`} onClick={()=> {cellOnClick(cell)}}/>)
+                                        <div className={`sim-cell ${getCellClassName(cell)}`} key={`cell-${cell.x}-${cell.y}-${cell.age}`} onClick={()=> {cellOnClick(cell)}}/>)
                                     })
                                 }
                             </div>

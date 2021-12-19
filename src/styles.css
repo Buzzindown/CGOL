@@ -104,7 +104,7 @@ code {
   color: black;
 }
 
-.row {
+.anim-row {
   width: 100vw;
   display: flex;
   align-items: center;
@@ -112,7 +112,7 @@ code {
   flex-basis: 100%;
 }
 
-.cell-wrapper {
+.anim-cell-wrapper {
   width: calc(100vw / var(--row-length));
   height: calc(100vw / var(--row-length));
   display: flex;
@@ -120,7 +120,7 @@ code {
   justify-content: center;
 }
 
-.cell {
+.anim-cell {
   height: calc(100% - 4px);
   width: calc(100% - 4px);
   background-color: white;

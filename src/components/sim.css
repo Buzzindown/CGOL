@@ -11,16 +11,25 @@
     flex-direction: column;
 }
 
-.row {
+.sim-row {
     width: 100%;
-    height: calc(100%/10)
+    height: calc(100%/var(--row-width));
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
 }
 
-.cell {
+.sim-cell {
     box-sizing: border-box;
     border: 1px solid white;
     height: 100%;
-    width: calc(100%/15)
+    width: calc(100%/var(--column-height));
+    justify-content: space-evenly;
+}
+
+.sim-cell:hover {
+    background-color: palegreen;
 }
 
 
@@ -66,4 +75,9 @@
 
 .age-5 {
     background-color: #84EFFF;
+}
+
+.play-pause{
+    background-color: white;
+    color:black;
 }

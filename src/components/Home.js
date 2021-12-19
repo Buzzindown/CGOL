@@ -42,11 +42,11 @@ function Home() {
       let row = [];
       for(let j = 0; j < rowLength; j++){
         row.push(
-        <div className="cell-wrapper" id={`cell-wrapper-${i}-${j}`} key={`cell-wrapper-${i}-${j}`}>
-          <div className="cell" id={`cell-${i}-${j}`} key={`cell-${i}-${j}`}/>
+        <div className="anim-cell-wrapper" id={`cell-wrapper-${i}-${j}`} key={`cell-wrapper-${i}-${j}`}>
+          <div className="anim-cell" id={`cell-${i}-${j}`} key={`cell-${i}-${j}`}/>
         </div>)
       }
-      newRowsArr.push(<div className="row" id={`row-${i}`}key={`row-${i}`}>{row}</div>)
+      newRowsArr.push(<div className="anim-row" id={`row-${i}`}key={`row-${i}`}>{row}</div>)
     }
     setRowsArr(newRowsArr);
   }
