@@ -3,14 +3,15 @@ import "./sim.css"
 
 function Sim(props) {
 
-    const {isPlaying} = props
+    const {isPlaying, gridSize} = props
 
     const [timeElapsed, setTimeElapsed] = useState(0);
     const [gameCells, setGameCells] = useState([]);
 
-    const rowWidth = 50;
-    const columnHeight = 50;
+    const [rowWidth, setRowWidth] = useState(0);
+    const [columnHeight, setColumnHeight] = useState(0);
 
+    // get a fresh set of cells
     const getGameCells = () => {
         let cells = []
         for(let i = 0; i < rowWidth; i++){
@@ -24,13 +25,40 @@ function Sim(props) {
             }
             cells.push(row)
         }
+        document.getElementById('root').style.setProperty("--row-width",`${rowWidth}`)
+        document.getElementById('root').style.setProperty("--column-height",`${columnHeight}`)
         setGameCells(cells)
     }
 
     useEffect(()=>{
-         document.getElementById('root').style.setProperty("--row-width",`${rowWidth}`)
-         document.getElementById('root').style.setProperty("--column-height",`${columnHeight}`)
+        let {width,height} = document.getElementById('grid-container').getBoundingClientRect();
+        width = Math.floor(width)
+        height = Math.floor(height)
+        console.log(width + ' || ' + height)
+        let gs = gridSize
+        while ((width % gs != 0) && (height % gs != 0)) {
+            gs++;
+          }
+        
+          let cols = Math.round(width / gs);
+          let rows = Math.round(height / gs);
+
+          setRowWidth(rows)
+          setColumnHeight(cols)
+        
+          console.log(cols, rows)
+
+    },[gridSize])
+
+    useEffect(()=>{
+         
+         getGameCells()
     },[])
+
+    // get our initial array
+    useEffect(()=>{
+        getGameCells()
+    },[rowWidth, columnHeight])
 
     // we have a means of starting/stopping the sim || cool
     useEffect(()=>{
@@ -58,6 +86,7 @@ function Sim(props) {
         setTimeElapsed((oldTime) => oldTime + 1)
     }
 
+    // should try implementing a fancier/faster algorithm
     const updateCell = (cell, oldGameCells) => {
         
         let newCell = {...cell}
@@ -142,9 +171,7 @@ function Sim(props) {
 
     
 
-    useEffect(()=>{
-        getGameCells()
-    },[])
+    
 
     return (
 
