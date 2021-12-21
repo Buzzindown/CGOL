@@ -6,7 +6,7 @@ import "./sim.css"
 function SimContainer() {
 
     const [playing,setPlaying] = useState(false)
-    const [gridSize, setGridSize] = useState(20)
+    const [gridSize, setGridSize] = useState(-1)
 
     return (
         <div id="sim-container">

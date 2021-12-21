@@ -31,29 +31,28 @@ function Sim(props) {
     }
 
     useEffect(()=>{
-        let {width,height} = document.getElementById('grid-container').getBoundingClientRect();
-        width = Math.floor(width)
-        height = Math.floor(height)
-        console.log(width + ' || ' + height)
-        let gs = gridSize
-        while ((width % gs != 0) && (height % gs != 0)) {
-            gs++;
-          }
-        
-          let cols = Math.round(width / gs);
-          let rows = Math.round(height / gs);
+        if(gridSize > 0){
+            let {width,height} = document.getElementById('grid-container').getBoundingClientRect();
+            width = Math.floor(width)
+            height = Math.floor(height)
+            while(width % 10 != 0){
+                width--;
+            }
+            while(height % 10 != 0){
+                height--;
+            }
+            let gs = gridSize
+            while ((width % gs != 0) && (height % gs != 0)) {
+                gs++;
+            }
+            
+            let cols = Math.round(width / gs);
+            let rows = Math.round(height / gs);
 
-          setRowWidth(rows)
-          setColumnHeight(cols)
-        
-          console.log(cols, rows)
-
+            setRowWidth(rows)
+            setColumnHeight(cols)
+        }
     },[gridSize])
-
-    useEffect(()=>{
-         
-         getGameCells()
-    },[])
 
     // get our initial array
     useEffect(()=>{
