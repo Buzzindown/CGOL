@@ -3,11 +3,10 @@ import "./sim.css"
 
 function Sim(props) {
 
-    const {isPlaying, gridSize} = props
-
-    const [timeElapsed, setTimeElapsed] = useState(0);
+    const {isPlaying, gridSize, setGensElapsedCB, gensElapsed, speed} = props
     const [gameCells, setGameCells] = useState([]);
 
+    const [lastTimeOut, setLastTimeOut] = useState(0)
     const [rowWidth, setRowWidth] = useState(0);
     const [columnHeight, setColumnHeight] = useState(0);
 
@@ -28,6 +27,17 @@ function Sim(props) {
         document.getElementById('root').style.setProperty("--row-width",`${rowWidth}`)
         document.getElementById('root').style.setProperty("--column-height",`${columnHeight}`)
         setGameCells(cells)
+    }
+
+    const runGeneration = () => {
+        if(isPlaying){
+            let to = setTimeout(()=>{
+                updateGeneration()
+            },speed)
+            setLastTimeOut(to)
+        }else{
+            clearTimeout(lastTimeOut)
+        }
     }
 
     useEffect(()=>{
@@ -59,14 +69,16 @@ function Sim(props) {
         getGameCells()
     },[rowWidth, columnHeight])
 
+    // this way we can make the speed slider smoother and cancel our to's
+    useEffect(()=>{
+        clearTimeout(lastTimeOut)
+        runGeneration()
+    },[speed])
+
     // we have a means of starting/stopping the sim || cool
     useEffect(()=>{
-        if(isPlaying){
-            setTimeout(()=>{
-                updateGeneration()
-            },10)
-        }
-    },[isPlaying, timeElapsed])
+        runGeneration()
+    },[isPlaying, gensElapsed])
 
     // will update to our next generation + update time elapsed
     const updateGeneration = () => {
@@ -82,7 +94,7 @@ function Sim(props) {
             })
             return newGameCells
         })
-        setTimeElapsed((oldTime) => oldTime + 1)
+        setGensElapsedCB((oldTime) => oldTime + 1)
     }
 
     // should try implementing a fancier/faster algorithm

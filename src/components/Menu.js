@@ -3,7 +3,7 @@ import './sim.css'
 
 function Menu(props) {
     
-    const {gridSizeCB, gridSize} = props
+    const {gridSizeCB, gridSize, setSpeedCB, speed} = props
     const [low, setLow] = useState(20)
     const [high, setHigh] = useState(100)
 
@@ -84,7 +84,9 @@ function Menu(props) {
     return (
         <div className="menu-div">
             <input type="range" min={low} max={high} value={gridSize} onChange={(e)=>{
-                gridSizeCB(e.target.value)}}/>
+            gridSizeCB(e.target.value)}}/>
+            <input style={{direction:'rtl'}}type="range" min={100} max={2000} value={speed} onChange={(e)=>{
+            setSpeedCB(e.target.value)}}/>
         </div>
     )
 }
