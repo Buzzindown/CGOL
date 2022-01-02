@@ -8,8 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/CGOL" element={<Home />}/>
-          <Route path="/CGOL/sim" element={<SimContainer/>}/>
+          <Route path="/" element={<Home />}/>
+          <Route path="/sim" element={<SimContainer/>}/>
       </Routes>
     </BrowserRouter>
   );
