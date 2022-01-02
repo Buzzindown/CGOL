@@ -1,17 +1,17 @@
 import React from 'react';
 import Home from './components/Home';
 import SimContainer from './components/SimContainer';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 function App() {
 
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-          <Route path="/" element={<Home />}/>
+          <Route exact path="/" element={<Home />}/>
           <Route path="/sim" element={<SimContainer/>}/>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
