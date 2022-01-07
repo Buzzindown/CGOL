@@ -17,7 +17,7 @@ function SimContainer() {
     return (
         <div id="sim-container">
             <Menu gridSizeCB={setGridSize} gridSize={gridSize} speed={speed} setSpeedCB={setSpeed}/>
-            <div className="play-pause" onClick={()=>{setPlaying((old) => !old)}}>{`${playing?"PLAY":"PAUSE"}`}</div>
+            <div style={{"backgroundColor":`${playing ? "blue" : "red"}`}}className="play-pause" onClick={()=>{setPlaying((old) => !old)}}>{`${playing?"PLAY":"PAUSE"}`}</div>
             <Sim isPlaying={playing} gridSize={gridSize} speed={speed}/>
         </div>
     )
