@@ -3,7 +3,9 @@ import "./sim.css"
 
 function Sim(props) {
 
-    const {isPlaying, gridSize, setGensElapsedCB, gensElapsed, speed} = props
+    const {isPlaying, gridSize, speed} = props
+    const [gensElapsed, setGensElapsed] = useState(0)
+
     const [gameCells, setGameCells] = useState([]);
 
     const [lastTimeOut, setLastTimeOut] = useState(0)
@@ -94,7 +96,7 @@ function Sim(props) {
             })
             return newGameCells
         })
-        setGensElapsedCB((oldTime) => oldTime + 1)
+        setGensElapsed((oldTime) => oldTime + 1)
     }
 
     // should try implementing a fancier/faster algorithm
@@ -185,7 +187,7 @@ function Sim(props) {
     
 
     return (
-
+        <>
         <div id="grid-container">
             {
                 gameCells.length > 0 && (
@@ -205,7 +207,9 @@ function Sim(props) {
             }
             
         </div>
-    )
+        <div style={{color:'white', textAlign:"center"}}>{gensElapsed}</div>
+        </>
+)
 }
 
 export default Sim

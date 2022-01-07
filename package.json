@@ -2,7 +2,7 @@
   "name": "CGOL",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://buzzindown.github.io/",
+  "homepage": "https://buzzindown.github.io/CGOL/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
