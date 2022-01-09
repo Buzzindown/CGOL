@@ -39,8 +39,6 @@ function Sim(props) {
                 updateGeneration()
             },speed)
             setLastTimeOut(to)
-        }else{
-            clearTimeout(lastTimeOut)
         }
     }
 
@@ -82,7 +80,7 @@ function Sim(props) {
     // we have a means of starting/stopping the sim || cool
     useEffect(()=>{
         runGeneration()
-    },[playing, gensElapsed])
+    },[playing,gensElapsed])
 
     // will update to our next generation + update time elapsed
     const updateGeneration = () => {
@@ -190,7 +188,18 @@ function Sim(props) {
 
     return (
         <>
-        <div style={{"backgroundColor":`${playing ? "blue" : "red"}`}}className="play-pause" onClick={()=>{setPlaying((old) => !old)}}>{`${playing?"PLAY":"PAUSE"}`}</div>
+        <div style={{"backgroundColor":`${playing ? "blue" : "red"}`}}
+        className="play-pause" 
+        onClick={()=>{
+            if(playing){
+                clearTimeout(lastTimeOut)
+                setPlaying(false)
+            }else{
+                setPlaying(true)
+            }}
+        }>
+            {`${playing?"PLAY":"PAUSE"}`}
+        </div>
         <div id="grid-container">
             {
                 gameCells.length > 0 && (
