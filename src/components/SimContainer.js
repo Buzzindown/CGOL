@@ -6,7 +6,6 @@ import "./sim.css"
 function SimContainer() {
 
     const [playing,setPlaying] = useState(false)
-    const [test, setTest] = useState(false)
     const [gridSize, setGridSize] = useState(-1)
     const [speed, setSpeed] = useState(1000)
 
@@ -18,8 +17,9 @@ function SimContainer() {
     return (
         <div id="sim-container">
             <Menu gridSizeCB={setGridSize} gridSize={gridSize} speed={speed} setSpeedCB={setSpeed}/>
-            <div style={{"backgroundColor":`${playing ? "blue" : "red"}`}}className="play-pause" onClick={()=>{setPlaying((old) => !old)}}>{`${playing?"PLAY":"PAUSE"}`}</div>
-            <div style={{"backgroundColor":`${test ? "purple" : "yellow"}`}}className="play-pause" onClick={()=>{setTest((old) => !old)}}>{`${test?"on":"off"}`}</div>
+            <button style={{"backgroundColor":`${playing ? "blue" : "red"}`}}className="play-pause" onClick={()=>{
+                setPlaying((old) => !old)}
+                }>{`${playing?"PLAY":"PAUSE"}`}</button>
             <Sim isPlaying={playing} gridSize={gridSize} speed={speed}/>
         </div>
     )
