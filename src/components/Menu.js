@@ -81,11 +81,12 @@ function Menu(props) {
     useEffect(() => {
         handleSizing()
     }, [])
+
     return (
         <div className="menu-div">
             <input type="range" min={low} max={high} value={gridSize} onChange={(e)=>{
             gridSizeCB(e.target.value)}}/>
-            <input style={{direction:'rtl'}}type="range" min={100} max={2000} value={speed} onChange={(e)=>{
+            <input style={{direction:'rtl'}}type="range" min={100} max={2000} step={100} value={speed} onChange={(e)=>{
             setSpeedCB(e.target.value)}}/>
         </div>
     )
