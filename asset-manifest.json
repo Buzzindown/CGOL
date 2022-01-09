@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/CGOL/static/css/main.8dd14222.css",
-    "main.js": "/CGOL/static/js/main.bd66eaef.js",
+    "main.css": "/CGOL/static/css/main.7b8be138.css",
+    "main.js": "/CGOL/static/js/main.f9bac4ef.js",
     "index.html": "/CGOL/index.html",
-    "main.8dd14222.css.map": "/CGOL/static/css/main.8dd14222.css.map",
-    "main.bd66eaef.js.map": "/CGOL/static/js/main.bd66eaef.js.map"
+    "main.7b8be138.css.map": "/CGOL/static/css/main.7b8be138.css.map",
+    "main.f9bac4ef.js.map": "/CGOL/static/js/main.f9bac4ef.js.map"
   },
   "entrypoints": [
-    "static/css/main.8dd14222.css",
-    "static/js/main.bd66eaef.js"
+    "static/css/main.7b8be138.css",
+    "static/js/main.f9bac4ef.js"
   ]
 }
