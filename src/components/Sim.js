@@ -3,7 +3,10 @@ import "./sim.css"
 
 function Sim(props) {
 
-    const {isPlaying, gridSize, speed} = props
+    const {gridSize, speed} = props
+
+    const [isPlaying,setIsPlaying] = useState(false)
+
 
     const [gameCells, setGameCells] = useState([]);
 
@@ -197,6 +200,10 @@ function Sim(props) {
 
     return (
         <>
+        <div style={{"backgroundColor":`${isPlaying ? "blue" : "red"}`}
+        }className="play-pause" 
+        onClick={()=>{setIsPlaying((old) => !old)}}>{`${isPlaying?"PLAY":"PAUSE"}`}
+        </div>
         <div id="grid-container">
             {
                 gameCells.length > 0 && (
