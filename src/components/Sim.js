@@ -77,12 +77,13 @@ function Sim(props) {
     // this way we can make the speed slider smoother and cancel our to's
     useEffect(()=>{
         // when speed changes, we want to clear the interval and start up a new one
+        console.log(lastInterval.current)
         clearInterval(lastInterval.current)
         if(isPlaying){
             // if we're playing we boot out the interval from runGeneration()
-            // and startup a new one
+            // and startup a new one With the new speed setting
             lastInterval.current = setInterval(()=>{
-                runGeneration()
+                updateGeneration()
             },speed)
         }
     },[speed])
