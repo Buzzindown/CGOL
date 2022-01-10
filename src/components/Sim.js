@@ -88,7 +88,7 @@ function Sim(props) {
     },[isPlaying])
 
     useEffect(()=>{
-        console.log("rerendering sim")
+        console.log("rerendering sim running = " + isPlaying)
     })
     // will update to our next generation + update time elapsed
     const updateGeneration = () => {

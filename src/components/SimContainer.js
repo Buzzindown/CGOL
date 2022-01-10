@@ -20,11 +20,9 @@ function SimContainer() {
             <Menu gridSizeCB={setGridSize} gridSize={gridSize} speed={speed} setSpeedCB={setSpeed}/>
             <div id="button-wrapper">
                 <button style={{"backgroundColor":`${playing ? "blue" : "red"}`}}className="play-pause" onClick={(e)=>{
-                    e.preventDefault()
                     setPlaying((old) => !old)}
                     }>{`${playing?"PLAY":"PAUSE"}`}</button>
                 <button className="play-pause" onClick={(e)=>{
-                    e.preventDefault()
                 setTest((old) => old +1)}
                 }>{test}</button>
             </div>
