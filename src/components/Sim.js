@@ -7,7 +7,7 @@ function Sim(props) {
 
     const [gameCells, setGameCells] = useState([]);
 
-    const lastTimeOut = useRef(0)
+    const lastTimeOut = useRef([])
     const gensElapsed = useRef(0)
 
     const [rowWidth, setRowWidth] = useState(0);
@@ -36,7 +36,9 @@ function Sim(props) {
         if(isPlaying){
             updateGeneration()
         }else{
-            clearTimeout(lastTimeOut.current)
+            lastTimeOut.current.forEach((id)=>{
+                clearTimeout(id)
+            })
         }
     }
 
@@ -71,11 +73,13 @@ function Sim(props) {
 
     // this way we can make the speed slider smoother and cancel our to's
     useEffect(()=>{
-        clearTimeout(lastTimeOut.current)
+        lastTimeOut.current.forEach((id)=>{
+            clearTimeout(id)
+        })
         let to = setTimeout(()=>{
             runGeneration()
         },speed)
-        lastTimeOut.current = to
+        lastTimeOut.current.push(to)
     },[speed])
 
     // we have a means of starting/stopping the sim || cool
@@ -102,9 +106,10 @@ function Sim(props) {
         })
         // we set our timeout for the next round
         gensElapsed.current += 1
-        lastTimeOut.current =  setTimeout(()=>{
+        let id = setTimeout(()=>{
             updateGeneration()
         },speed)
+        lastTimeOut.current.push(id)
         
     }
 
