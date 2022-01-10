@@ -7,7 +7,7 @@ function Sim(props) {
 
     const [gameCells, setGameCells] = useState([]);
 
-    const lastTimeOut = useRef([])
+    const lastInterval = useRef(0)
     const gensElapsed = useRef(0)
 
     const [rowWidth, setRowWidth] = useState(0);
@@ -34,13 +34,14 @@ function Sim(props) {
 
     const runGeneration = () => {
         if(isPlaying){
-            updateGeneration()
+            // if we start playing, we kick up an interval
+            clearInterval(lastInterval.current)
+            lastInterval.current = setInterval(()=>{
+                updateGeneration()
+            },speed)
         }else{
-            console.log(lastTimeOut.current)
-            lastTimeOut.current.forEach((id)=>{
-                clearTimeout(id)
-            })
-            lastTimeOut.current = []
+            // no playing, we stop the interval
+            clearInterval(lastInterval.current)
         }
     }
 
@@ -75,14 +76,15 @@ function Sim(props) {
 
     // this way we can make the speed slider smoother and cancel our to's
     useEffect(()=>{
-        lastTimeOut.current.forEach((id)=>{
-            clearTimeout(id)
-        })
-        lastTimeOut.current = []
-        let to = setTimeout(()=>{
-            runGeneration()
-        },speed)
-        lastTimeOut.current.push(to)
+        // when speed changes, we want to clear the interval and start up a new one
+        clearInterval(lastInterval.current)
+        if(isPlaying){
+            // if we're playing we boot out the interval from runGeneration()
+            // and startup a new one
+            lastInterval.current = setInterval(()=>{
+                runGeneration()
+            },speed)
+        }
     },[speed])
 
     // we have a means of starting/stopping the sim || cool
@@ -109,11 +111,6 @@ function Sim(props) {
         })
         // we set our timeout for the next round
         gensElapsed.current += 1
-        let id = setTimeout(()=>{
-            updateGeneration()
-        },speed)
-        lastTimeOut.current.push(id)
-        
     }
 
     // should try implementing a fancier/faster algorithm
