@@ -20,6 +20,7 @@
 
 .play-pause{
     height: 2.5%;
+    cursor: pointer;
 }
 
 .menu-div {
