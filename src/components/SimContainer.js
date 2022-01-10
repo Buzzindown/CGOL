@@ -7,6 +7,7 @@ function SimContainer() {
 
     const [playing,setPlaying] = useState(false)
     const [gridSize, setGridSize] = useState(-1)
+    const [test, setTest] = useState(1)
     const [speed, setSpeed] = useState(1000)
 
     useEffect(()=>{
@@ -17,9 +18,15 @@ function SimContainer() {
     return (
         <div id="sim-container">
             <Menu gridSizeCB={setGridSize} gridSize={gridSize} speed={speed} setSpeedCB={setSpeed}/>
-            <button style={{"backgroundColor":`${playing ? "blue" : "red"}`}}className="play-pause" onClick={()=>{
-                setPlaying((old) => !old)}
-                }>{`${playing?"PLAY":"PAUSE"}`}</button>
+            <div id="button-wrapper">
+                <button style={{"backgroundColor":`${playing ? "blue" : "red"}`}}className="play-pause" onClick={()=>{
+                    setPlaying((old) => !old)}
+                    }>{`${playing?"PLAY":"PAUSE"}`}</button>
+                <button className="play-pause" onClick={()=>{
+                setTest((old) => old +1)}
+                }>{test}</button>
+            </div>
+          
             <Sim isPlaying={playing} gridSize={gridSize} speed={speed}/>
         </div>
     )

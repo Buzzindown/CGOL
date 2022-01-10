@@ -18,8 +18,14 @@
     flex-direction: column;
 }
 
+#button-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .play-pause{
-    height: 2.5%;
+    height: 5%;
     cursor: pointer;
 }
 
