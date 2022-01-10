@@ -10,9 +10,9 @@ function SimContainer() {
     const [test, setTest] = useState(1)
     const [speed, setSpeed] = useState(1000)
 
-    useEffect(()=>{
-        console.log("rerendering with playing = " + playing)
-    })
+    // useEffect(()=>{
+    //     console.log("rerendering with playing = " + playing)
+    // })
     
 
     return (

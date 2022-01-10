@@ -36,9 +36,11 @@ function Sim(props) {
         if(isPlaying){
             updateGeneration()
         }else{
+            console.log(lastTimeOut.current)
             lastTimeOut.current.forEach((id)=>{
                 clearTimeout(id)
             })
+            lastTimeOut.current = []
         }
     }
 
@@ -76,6 +78,7 @@ function Sim(props) {
         lastTimeOut.current.forEach((id)=>{
             clearTimeout(id)
         })
+        lastTimeOut.current = []
         let to = setTimeout(()=>{
             runGeneration()
         },speed)
@@ -87,9 +90,9 @@ function Sim(props) {
         runGeneration()
     },[isPlaying])
 
-    useEffect(()=>{
-        console.log("rerendering sim running = " + isPlaying)
-    })
+    // useEffect(()=>{
+    //     console.log("rerendering sim running = " + isPlaying)
+    // })
     // will update to our next generation + update time elapsed
     const updateGeneration = () => {
         setGameCells((oldGameCells) => {
