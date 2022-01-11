@@ -1,4 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react'
+import Cell from './Cell';
 import "./sim.css"
 
 function Sim(props) {
@@ -50,14 +51,14 @@ function Sim(props) {
             let {width,height} = document.getElementById('grid-container').getBoundingClientRect();
             width = Math.floor(width)
             height = Math.floor(height)
-            while(width % 10 != 0){
+            while(width % 10 !== 0){
                 width--;
             }
-            while(height % 10 != 0){
+            while(height % 10 !== 0){
                 height--;
             }
             let gs = gridSize
-            while ((width % gs != 0) && (height % gs != 0)) {
+            while ((width % gs !== 0) && (height % gs !== 0)) {
                 gs++;
             }
             
@@ -78,20 +79,28 @@ function Sim(props) {
     useEffect(()=>{
         // when speed changes, we want to clear the interval and start up a new one
         console.log(lastInterval.current)
-        clearInterval(lastInterval.current)
-        if(isPlaying){
-            // if we're playing we boot out the interval from runGeneration()
-            // and startup a new one With the new speed setting
-            lastInterval.current = setInterval(()=>{
-                updateGeneration()
-            },speed)
-        }
+        // clearInterval(lastInterval.current)
+        // if(isPlaying){ 
+        //     // if we're playing we boot out the interval from runGeneration() !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //     // and startup a new one With the new speed setting
+        //     lastInterval.current = setInterval(()=>{
+        //         updateGeneration()
+        //     },speed)
+        // }
     },[speed])
 
-    // we have a means of starting/stopping the sim || cool
+    // we have a means of starting/stopping the sim || cool !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // useEffect(()=>{
+    //     runGeneration()
+    // },[isPlaying])
+
     useEffect(()=>{
-        runGeneration()
-    },[isPlaying])
+        setTimeout(()=>{
+            setInterval(()=>{
+                updateGeneration()
+            },speed)
+        },10000)
+    },[])
 
     // useEffect(()=>{
     //     console.log("rerendering sim running = " + isPlaying)
@@ -157,6 +166,12 @@ function Sim(props) {
                 newCell.age += -1;
             }
         }
+
+        if(newCell.age < -5){
+            newCell.age = -5
+        }else if(newCell.age > 5){
+            newCell.age = 5
+        }
         
         return newCell
 
@@ -199,7 +214,7 @@ function Sim(props) {
 
     
 
-    
+    // <div className={`sim-cell ${getCellClassName(cell)}`} key={`cell-${cell.x}-${cell.y}`} onClick={()=> {cellOnClick(cell)}}/>)
 
     return (
         <>
@@ -212,7 +227,10 @@ function Sim(props) {
                                 {
                                     row.map((cell) => {
                                         return (
-                                        <div className={`sim-cell ${getCellClassName(cell)}`} key={`cell-${cell.x}-${cell.y}-${cell.age}`} onClick={()=> {cellOnClick(cell)}}/>)
+                                        <Cell  key={`cell-${cell.x}-${cell.y}-${cell.age}`}
+                                        getName={getCellClassName} 
+                                        cellData={cell} 
+                                        clickCb={cellOnClick}/>)
                                     })
                                 }
                             </div>
