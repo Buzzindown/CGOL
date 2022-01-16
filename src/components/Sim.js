@@ -4,12 +4,11 @@ import "./sim.css"
 
 function Sim(props) {
 
-    const {isPlaying, gridSize, speed} = props
+    const {gensElapsed, setPlaying, isPlaying, gridSize, speed, gridOn, ageOn} = props
 
     const [gameCells, setGameCells] = useState([]);
 
     const lastInterval = useRef(0)
-    const gensElapsed = useRef(0)
 
     const [rowWidth, setRowWidth] = useState(0);
     const [columnHeight, setColumnHeight] = useState(0);
@@ -94,10 +93,6 @@ function Sim(props) {
         runGeneration()
     },[isPlaying])
 
-
-    // useEffect(()=>{
-    //     console.log("rerendering sim running = " + isPlaying)
-    // })
     // will update to our next generation + update time elapsed
     const updateGeneration = () => {
         setGameCells((oldGameCells) => {
@@ -197,18 +192,32 @@ function Sim(props) {
     }
 
     const getCellClassName = (cell) => {
-        if(cell.age >= 5){
-            return "age-5"
-        }else if(cell.age <= -5){
-            return "age--5"
+        let ret = ""
+        if(ageOn){
+            if(cell.age >= 5){
+                ret = "age-5"
+            }else if(cell.age <= -5){
+                ret = "age--5"
+            }else{
+                ret = `age-${cell.age}`
+            }
         }else{
-            return `age-${cell.age}`
+            if(cell.age >= 0){
+                ret = "cell-alive"
+            }else{
+                ret = "cell-dead"
+            }
         }
+        
+        return `${ret} ${gridOn && "grid-On"}`
     }
 
     
     return (
-        <>
+        <div id="sim-side">
+        <button style={{"backgroundColor":`${isPlaying ? "blue" : "red"}`}}className="play-pause" onClick={(e)=>{
+            setPlaying((old) => !old)}
+        }>{`${isPlaying?"PLAY":"PAUSE"}`}</button>
         <div id="grid-container">
             {
                 gameCells.length > 0 && (
@@ -231,8 +240,8 @@ function Sim(props) {
             }
             
         </div>
-        <div style={{color:'white', textAlign:"center"}}>{gensElapsed.current}</div>
-        </>
+        <h3 id="gens-elapsed">{gensElapsed.current}</h3>
+        </div>
 )
 }
 

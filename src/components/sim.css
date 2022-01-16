@@ -2,37 +2,74 @@
     height: 100%;
     box-sizing: border-box;
     background-color: black;
+    display:flex;
+    flex-direction: row;
+    color: white;
 }
 
-@media screen and (max-width: 600px) {
-    #sim-container {
-        padding: 5%;
-    }
-    
-}
 
 #grid-container {
+    width: 90%;
     height: 80%;
     display: flex;
     flex-direction: column;
 }
 
-#button-wrapper{
+#sim-side {
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 15%;
+    flex-direction: column;
+}
+#menu-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    border-right: 2px solid white;
+    height: 100%;
+    width: 15%;
+    padding: 0 1.5%;
+}
+
+/* text styling */
+#gens-elapsed {
+    margin: 0;
+    height: 10%;
+    font-size: 1.5em;
+}
+
+h5 {
+    text-align: center;
+    margin: 2rem 0 1rem 0;
+    font-size: 2em;
 }
 
 .play-pause{
-    height: 100%;
-    width: 100%;
+    height: 10%;
     cursor: pointer;
 }
 
-.menu-div {
-    height: 5%;
+h6 {
+    font-size: 1.25em;
+    margin: 0.25rem;
 }
+
+.slider-indicator {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.slider-indicator p {
+    font-size: 0.75em;
+    margin: 0.1rem;
+}
+
+
 
 .sim-row {
     width: 100%;
@@ -45,14 +82,17 @@
 
 .sim-cell {
     box-sizing: border-box;
-    border: 1px solid white;
     height: 100%;
     width: calc(100%/var(--column-height));
     justify-content: space-evenly;
 }
 
+.grid-On {
+    border: 1px solid white;
+}
+
 .sim-cell:hover {
-    background-color: palegreen;
+    background-color: white;
 }
 
 
@@ -99,6 +139,15 @@
 .age-5 {
     background-color: #84EFFF;
 }
+
+.cell-alive {
+    background-color: white;
+}
+
+.cell-dead {
+    background-color: black;
+}
+
 
 .play-pause{
     background-color: white;

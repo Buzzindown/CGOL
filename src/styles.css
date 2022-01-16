@@ -157,20 +157,3 @@ code {
   font-size: 4rem;
 }
 
-@media screen and (max-width: 600px) {
-    #heading-wrapper {
-      top: 30%;
-      width: 70%;
-      padding: 0.5em;
-
-    }
-    #cgol-app h1 {
-      font-size: 2rem; 
-    }
-    
-    #cgol-app p {
-      font-size: 1rem;
-    }
-  
-}
-

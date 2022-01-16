@@ -3,7 +3,17 @@ import './sim.css'
 
 function Menu(props) {
     
-    const {gridSizeCB, gridSize, setSpeedCB, speed} = props
+    const {
+        gensElapsed,
+        gridSizeCB, 
+        gridSize, 
+        setSpeedCB, 
+        speed, 
+        isPlaying, 
+        setAge, 
+        ageOn,
+        setGrid,
+        gridOn} = props
     const [low, setLow] = useState(20)
     const [high, setHigh] = useState(100)
 
@@ -14,7 +24,7 @@ function Menu(props) {
         if(width >= height){
             // more of a desktop situation
             // here maybe we want the max to be 500 cells
-            getLowAndHigh(2000, 20)
+            getLowAndHigh(2500, 20)
         }else{
             /// here maybe we want the max to be like 200 cells
             getLowAndHigh(800, 20)
@@ -83,11 +93,38 @@ function Menu(props) {
     }, [])
 
     return (
-        <div className="menu-div">
-            <input type="range" min={low} max={high} value={gridSize} onChange={(e)=>{
-            gridSizeCB(e.target.value)}}/>
-            <input style={{direction:'rtl'}}type="range" min={100} max={2000} step={100} value={speed} onChange={(e)=>{
-            setSpeedCB(e.target.value)}}/>
+        <div id="menu-container">
+            <h5>Control Panel</h5>
+            <h6>Grid Size</h6>
+            <div className="slider-indicator">
+                <p>Small</p>
+                <p>Large</p>
+            </div>
+            <input  type="range" min={low} max={high-low} value={high - gridSize} onChange={(e)=>{
+                if(!isPlaying){
+                    gridSizeCB(high - e.target.value)
+                    gensElapsed.current = 0
+                }
+           }}/>
+            <h6>Simulator Speed</h6>
+            <div className="slider-indicator">
+                <p>Slow</p>
+                <p>Fast</p>
+            </div>
+            <input type="range" min={100} max={2000} step={100} value={1900 - speed} onChange={(e)=>{
+            setSpeedCB(1900 - e.target.value)}}/>
+            <h6>Grid On/Off</h6>
+            <button onClick={()=>{
+                setGrid(!gridOn)
+            }}>
+                test1
+            </button>
+            <h6>Cell Age On/Off</h6>
+            <button onClick={()=>{
+                setAge(!ageOn)
+            }}>
+                test2
+            </button>
         </div>
     )
 }
