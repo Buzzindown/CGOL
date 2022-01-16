@@ -79,28 +79,21 @@ function Sim(props) {
     useEffect(()=>{
         // when speed changes, we want to clear the interval and start up a new one
         console.log(lastInterval.current)
-        // clearInterval(lastInterval.current)
-        // if(isPlaying){ 
-        //     // if we're playing we boot out the interval from runGeneration() !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //     // and startup a new one With the new speed setting
-        //     lastInterval.current = setInterval(()=>{
-        //         updateGeneration()
-        //     },speed)
-        // }
-    },[speed])
-
-    // we have a means of starting/stopping the sim || cool !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // useEffect(()=>{
-    //     runGeneration()
-    // },[isPlaying])
-
-    useEffect(()=>{
-        setTimeout(()=>{
-            setInterval(()=>{
+        clearInterval(lastInterval.current)
+        if(isPlaying){ 
+            // if we're playing we boot out the interval from runGeneration() 
+            // and startup a new one With the new speed setting
+            lastInterval.current = setInterval(()=>{
                 updateGeneration()
             },speed)
-        },10000)
-    },[])
+        }
+    },[speed])
+
+    // we have a means of starting/stopping the sim 
+    useEffect(()=>{
+        runGeneration()
+    },[isPlaying])
+
 
     // useEffect(()=>{
     //     console.log("rerendering sim running = " + isPlaying)
@@ -122,6 +115,7 @@ function Sim(props) {
         // we set our timeout for the next round
         gensElapsed.current += 1
     }
+
 
     // should try implementing a fancier/faster algorithm
     const updateCell = (cell, oldGameCells) => {
@@ -213,9 +207,6 @@ function Sim(props) {
     }
 
     
-
-    // <div className={`sim-cell ${getCellClassName(cell)}`} key={`cell-${cell.x}-${cell.y}`} onClick={()=> {cellOnClick(cell)}}/>)
-
     return (
         <>
         <div id="grid-container">

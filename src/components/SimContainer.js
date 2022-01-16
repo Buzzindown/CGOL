@@ -10,11 +10,6 @@ function SimContainer() {
     const [test, setTest] = useState(1)
     const [speed, setSpeed] = useState(1000)
 
-    // useEffect(()=>{
-    //     console.log("rerendering with playing = " + playing)
-    // })
-    
-
     return (
         <div id="sim-container">
             <Menu gridSizeCB={setGridSize} gridSize={gridSize} speed={speed} setSpeedCB={setSpeed}/>
