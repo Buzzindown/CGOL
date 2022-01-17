@@ -8,8 +8,8 @@ function App() {
   return (
     <HashRouter>
       <Routes>
-          <Route exact path="/" element={<Home />}/>
-          <Route path="/sim" element={<SimContainer/>}/>
+          <Route  path="/" element={<Home />}/>
+          <Route  path="/sim" element={<SimContainer/>}/>
       </Routes>
     </HashRouter>
   );

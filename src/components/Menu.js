@@ -2,6 +2,9 @@ import React,{useState, useEffect} from 'react'
 import './sim.css'
 
 function Menu(props) {
+
+    const speedMax = 2000
+    const speedMin = 100
     
     const {
         gensElapsed,
@@ -14,6 +17,7 @@ function Menu(props) {
         ageOn,
         setGrid,
         gridOn} = props
+
     const [low, setLow] = useState(20)
     const [high, setHigh] = useState(100)
 
@@ -44,7 +48,6 @@ function Menu(props) {
         while(height % 10 != 0){
             height--;
         }
-        console.log(width + " " + height)
         // determine our largest grid
         while(!found){
             while ((width % low != 0) && (height % low != 0)) {
@@ -57,7 +60,7 @@ function Menu(props) {
             if(cols * rows <= maxCells){
                 found = true;
                 setLow(low)
-                console.log(`found a low of ${cols} * ${rows} using high of ${low} for grid size ${cols * rows}`)
+                // console.log(`found a low of ${cols} * ${rows} using high of ${low} for grid size ${cols * rows}`)
                 // if it isnt within our constraints, push it past this set
             }else{
                 low++;
@@ -77,7 +80,7 @@ function Menu(props) {
             if(cols * rows >= minCells){
                 found = true;
                 setHigh(high)
-                console.log(`found a high of ${cols} * ${rows} using high of ${high} for grid size ${cols * rows}`)
+                // console.log(`found a high of ${cols} * ${rows} using high of ${high} for grid size ${cols * rows}`)
                 // if it isnt within our constraints, push it past this set
             }else{
                 high--;
@@ -111,8 +114,8 @@ function Menu(props) {
                 <p>Slow</p>
                 <p>Fast</p>
             </div>
-            <input type="range" min={100} max={2000} step={100} value={1900 - speed} onChange={(e)=>{
-            setSpeedCB(1900 - e.target.value)}}/>
+            <input type="range" min={speedMin} max={speedMax} step={speedMin} value={(speedMax-speedMin) - speed} onChange={(e)=>{
+            setSpeedCB((speedMax-speedMin) - e.target.value)}}/>
             <h6>Grid On/Off</h6>
             <button onClick={()=>{
                 setGrid(!gridOn)

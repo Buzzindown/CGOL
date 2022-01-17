@@ -86,13 +86,33 @@ function Home() {
     setTableJSX(columnLength, rowLength)
   }, [])
 
+  const validScreenSize = () => (
+    <div id="heading-wrapper" className="fade-in-util" onClick={()=>{navigate("/sim")}}>
+    <h1>Conway's Game of Life</h1>
+    <p>Let's Get Started</p>
+   </div>
+  )
+
+  const invalidScreenSize = () => (
+    <div id="heading-wrapper" className="fade-in-util" onClick={()=>{window.location = "https://github.com/Buzzindown" }}>
+    <h1>SORRY, CURRENTLY FOR DESKTOP ONLY</h1>
+    <p>It appears you're on mobile, click to head over to my github!</p>
+   </div>
+  )
+
+  const getSceenMessage = () => {
+    let {width,height} = document.getElementById('cgol-app-grid').getBoundingClientRect();
+    if(width < 1000){
+      return invalidScreenSize()
+    }
+    return validScreenSize()
+  }
+
+
   return (
     <div id="cgol-app-grid">
      {animationDone &&(
-       <div id="heading-wrapper" className="fade-in-util" onClick={()=>{navigate("/sim")}}>
-        <h1>Conway's Game of Life</h1>
-        <p>Let's Get Started</p>
-       </div>
+       getSceenMessage()
       )
       }
      {

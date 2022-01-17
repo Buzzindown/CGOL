@@ -1,9 +1,20 @@
 import React,{useState, useEffect, useRef} from 'react'
+import { useNavigate } from 'react-router-dom';
 import Menu from './Menu'
 import Sim from './Sim'
 import "./sim.css"
 
 function SimContainer() {
+
+    const navigate = useNavigate()
+
+    // redirect if they somehow went directly thru url
+    useEffect(()=>{
+        let {width} = document.getElementById('sim-container').getBoundingClientRect();
+        if(width < 1000){
+            navigate("/")
+        }   
+    },[])
 
     const [ageOn, setAge] = useState(true)
     const [gridOn, setGrid] = useState(true)

@@ -215,6 +215,8 @@ function Sim(props) {
     
     return (
         <div id="sim-side">
+        <img src="media/pauseIcon.png" alt="play and pause button"/> 
+
         <button style={{"backgroundColor":`${isPlaying ? "blue" : "red"}`}}className="play-pause" onClick={(e)=>{
             setPlaying((old) => !old)}
         }>{`${isPlaying?"PLAY":"PAUSE"}`}</button>
