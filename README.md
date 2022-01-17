@@ -5,35 +5,9 @@ The website provides a grid on which creators can lay out their designs.\
 The simulator can then be run, allowing the creator to observe\
 how the simulations reacts to their creation.
 
-Live website: http://interactivecgol.com/
+Previously, I built this with vanilla JavaScript/CSS/HTML but have since
+decided to remake it in React. Development is still in progress but the current
+version is functioning well on desktop.
 
-## Why p5.js
-I chose p5.js as the graphical library for this project for a few reasons.\
-Mainly, for ease of use. Admittedly, p5 is impressively inefficient, however\
-seeing as this project is quite small, I wasn't too worried about performance.\
-P5 was a reinterpretation of the original Processing library, specifically\
-aimed at web use. This made it my top choice.
+Live website: https://buzzindown.github.io/CGOL/
 
-## Functionality
-Most of the functionality is described in the introduction.html page. However,\
-I'll give a brief overview of the features.\
-|Feature|
-|---|
-|Adjustable grid size|
-|Toggleable grid overlay|
-|Draw your creation|
-|Pause/play|
-|Adjust generation speed|
-|Adjust brush size|
-|Generation counter|
-
-## Next Steps
-- Making the website mobile friendly.
-- Dedicated generation stepping button. 
-- Turning aging (colors) on or off. 
-- Possible account system, to save previous designs
-and come back to them in the future.
-
-## Sample gif
-
-![](sample.gif)

@@ -1,0 +1,159 @@
+:root {
+  --main-bg-color: black;
+  --header-color: white;
+  --text-color: white;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  height: 100vh;
+}
+
+@keyframes slide-up {
+  from {top: 100%;}
+  to {top: 0%}
+}
+
+@keyframes fade-in {
+  from{background-color: rgba(255,255,255,0);}
+  to {background-color: rgba(255,255,255,1);}
+}
+
+#cgol-app-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height:100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: black;
+  z-index: 1;
+}
+
+#white-slider {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-color: white;
+}
+
+.slide-up-util {
+  animation-name: slide-up;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+.fade-in-util {
+  animation-name: fade-in;
+  animation-duration: 0.75s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+
+
+#heading-wrapper{
+  position: absolute;
+  text-align: center;
+  left:0;
+  right:0;
+  top: 40%;
+  margin: auto;
+  width: 60%;
+  padding: 2em;
+  background-color: white;
+  border: 3px solid black;
+  outline: 2px solid white;
+  color: white;
+  z-index: 80;
+}
+
+#heading-wrapper:hover > * {
+  font-weight: 1000;
+  cursor: pointer;
+}
+
+#heading-wrapper:hover{
+  outline: 6px solid white;
+}
+
+#heading-wrapper :is(p, h1){
+  z-index: 30;
+  color: black;
+}
+
+.anim-row {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-basis: 100%;
+}
+
+.anim-cell-wrapper {
+  width: calc(100vw / var(--row-length));
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anim-cell {
+  height: calc(100% - 4px);
+  width: calc(100% - 4px);
+  background-color: white;
+  transition: background-color var(--cell-animation) ease;
+  z-index: 50;
+}
+
+#white-slider {
+  height: 100vh;
+  width: 100vw;
+}
+
+#cgol-app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  /* background-color: var(--main-bg-color); */
+}
+
+#cgol-app :is(h1,p) {
+  color: var(--header-color);
+  text-align: center;
+  margin: 0.5rem 2rem;
+}
+
+
+#cgol-app h1 {
+  font-size: 5rem; 
+}
+
+#cgol-app p {
+  font-size: 4rem;
+}
+
